@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOLOMON BARBERSHOP ZURICH | Barbershop in Zürich</title>
+  <meta name="description" content="Moderner Barbershop in Zürich für Herrenhaarschnitte, Fade Cuts, Bartpflege und Styling. Besuchen Sie SOLOMON BARBERSHOP ZURICH an der Zypressenstrasse 54." />
+  <meta name="keywords" content="Barbershop Zürich, Herrenhaarschnitt Zürich, Fade Cut Zürich, Bart trimmen Zürich, Friseur Zürich" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="SOLOMON BARBERSHOP ZURICH | Barbershop in Zürich" />
+  <meta property="og:description" content="Moderner Barbershop in Zürich für Herrenhaarschnitte, Fade Cuts, Bartpflege und Styling." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0a0a0a;
+      --dark:    #111111;
+      --mid:     #1c1c1c;
+      --card:    #161616;
+      --border:  #2a2a2a;
+      --grey:    #888888;
+      --light:   #e8e8e8;
+      --white:   #ffffff;
+      --gold:    #c9a84c;
+      --gold-dk: #a8893a;
+      --radius:  6px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    /* ─── UTILITY ─── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 96px 0; }
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--grey);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 30px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .btn-gold:hover { background: var(--gold-dk); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .divider {
+      width: 48px; height: 3px;
+      background: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { margin-left: 16px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+      padding: 24px;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; flex-direction: column; gap: 20px; }
+    .mobile-menu a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--light);
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.82) 60%, rgba(10,10,10,0.6) 100%),
+        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 9vw, 100px);
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 24px;
+    }
+    .hero-title span { color: var(--gold); }
+    .hero-sub {
+      font-size: 17px;
+      color: #aaaaaa;
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 60px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--grey);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--grey);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll::after {
+      content: '';
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--grey), transparent);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── SERVICES ─── */
+    #leistungen { background: var(--dark); }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .service-card {
+      background: var(--card);
+      padding: 36px 32px;
+      transition: background 0.2s;
+      cursor: default;
+    }
+    .service-card:hover { background: #1e1e1e; }
+    .service-icon {
+      width: 48px; height: 48px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .service-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--white);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .service-desc {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .service-price {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ─── ABOUT ─── */
+    #ueber-uns { background: var(--black); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--radius);
+      display: block;
+    }
+    .about-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--grey);
+      font-size: 13px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+    .about-img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%),
+        url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=800&q=80') center/cover no-repeat;
+      opacity: 0.6;
+    }
+    .about-corner {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: var(--gold);
+      color: var(--black);
+      padding: 20px 24px;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .about-corner-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      line-height: 1;
+    }
+    .about-corner-txt {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .about-text p {
+      font-size: 15px;
+      color: #999;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .about-text p strong { color: var(--light); font-weight: 600; }
+    .about-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .feature-tag {
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--light);
+    }
+
+    /* ─── GALLERY ─── */
+    #galerie { background: var(--dark); }
+    .gallery-header { margin-bottom: 48px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(2, 260px);
+      gap: 12px;
+    }
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      background: var(--mid);
+    }
+    .gallery-item:nth-child(1) { grid-column: span 5; }
+    .gallery-item:nth-child(2) { grid-column: span 4; }
+    .gallery-item:nth-child(3) { grid-column: span 3; }
+    .gallery-item:nth-child(4) { grid-column: span 3; }
+    .gallery-item:nth-child(5) { grid-column: span 5; }
+    .gallery-item:nth-child(6) { grid-column: span 4; }
+    .gallery-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover .gallery-img { transform: scale(1.05); }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── WHY ─── */
+    #warum { background: var(--black); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .why-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .why-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      transform: translateY(-3px);
+    }
+    .why-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    .why-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: var(--white);
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .why-desc {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    /* ─── HOURS ─── */
+    #oeffnungszeiten {
+      background: var(--mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .hours-table { width: 100%; margin-top: 32px; }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--light);
+    }
+    .hours-time {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .hours-time.closed { color: var(--grey); }
+    .hours-cta {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      text-align: center;
+    }
+    .hours-cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .hours-cta-sub {
+      font-size: 14px;
+      color: var(--grey);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .hours-cta-btns { display: flex; flex-direction: column; gap: 12px; }
+
+    /* ─── CONTACT ─── */
+    #kontakt { background: var(--dark); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+    .contact-info { }
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .contact-item-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 4px;
+    }
+    .contact-item-val {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--light);
+    }
+    .contact-item-val a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-item-val a:hover { color: var(--gold); }
+    .map-placeholder {
+      width: 100%;
+      height: 220px;
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--grey);
+      font-size: 14px;
+      margin-top: 32px;
+      overflow: hidden;
+      position: relative;
+    }
+    .map-placeholder iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(1) brightness(0.5);
+    }
+    .map-placeholder-label {
+      position: relative;
+      z-index: 1;
+      background: rgba(0,0,0,0.7);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact-form { }
+    .form-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .form-sub {
+      font-size: 14px;
+      color: var(--grey);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      color: var(--light);
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { min-height: 120px; }
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--gold-dk); transform: translateY(-1px); }
+    .form-note {
+      font-size: 12px;
+      color: var(--grey);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .footer-brand-logo span { color: var(--gold); }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.7;
+      max-width: 280px;
+      margin-bottom: 20px;
+    }
+    .footer-contact-line {
+      font-size: 14px;
+      color: var(--grey);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-contact-line a { color: var(--grey); text-decoration: none; }
+    .footer-contact-line a:hover { color: var(--gold); }
+    .footer-heading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 14px;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--grey);
+    }
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-legal a {
+      font-size: 13px;
+      color: var(--grey);
+      text-decoration: none;
+    }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ─── TOAST ─── */
+    .toast {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      background: var(--gold);
+      color: var(--black);
+      padding: 14px 24px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-corner { bottom: -16px; right: 16px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hours-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:nth-child(n) { grid-column: span 1; }
+      .gallery-item:nth-child(1) { grid-column: span 2; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 64px 0; }
+      .hero-title { font-size: 52px; }
+      .hero-stats { gap: 28px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:nth-child(n) { grid-column: span 1; height: 220px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .toast { left: 16px; right: 16px; bottom: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">SOLOMON <span>BARBERSHOP</span></a>
+      <ul class="nav-links">
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="tel:0443048856" class="btn btn-gold nav-cta" style="padding:10px 22px;font-size:13px;">
+        📞 044 304 88 56
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#leistungen" onclick="closeMobile()">Leistungen</a>
+  <a href="#ueber-uns" onclick="closeMobile()">Über uns</a>
+  <a href="#galerie" onclick="closeMobile()">Galerie</a>
+  <a href="#oeffnungszeiten" onclick="closeMobile()">Öffnungszeiten</a>
+  <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
+  <a href="tel:0443048856" class="btn btn-gold" style="text-align:center;justify-content:center;margin-top:8px;">📞 Jetzt anrufen</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Barbershop · Zürich 8004</div>
+      <h1 class="hero-title">
+        Dein Barbershop<br /><span>in Zürich</span>
+      </h1>
+      <p class="hero-sub">
+        Moderne Herrenhaarschnitte, präzise Bartpflege und frischer Style an der Zypressenstrasse 54. Für Männer, die Wert auf ihr Aussehen legen.
+      </p>
+      <div class="hero-btns">
+        <a href="tel:0443048856" class="btn btn-gold">📞 Jetzt anrufen</a>
+        <a href="#kontakt" class="btn btn-outline">✉ Termin anfragen</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Leistungen</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">11h</div>
+          <div class="stat-label">Täglich geöffnet</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">Mo–Sa</div>
+          <div class="stat-label">Immer für dich da</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="leistungen" class="section">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="section-label">Leistungen</div>
+        <h2 class="section-title">Was wir anbieten</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Von präzisen Fades bis zur perfekten Bartpflege – wir bieten alles, was der moderne Mann braucht.</p>
+      </div>
+      <a href="tel:0443048856" class="btn btn-gold" style="white-space:nowrap;align-self:flex-end;">
+        📞 Preise erfragen
+      </a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">✂️</div>
+        <div class="service-name">Herrenhaarschnitt</div>
+        <p class="service-desc">Klassischer oder moderner Herrenhaarschnitt – präzise ausgeführt und perfekt auf deinen Typ abgestimmt.</p>
+        <div class="service-price">Preise auf Anfrage</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <div class="service-name">Fade Cut</div>
+        <p class="service-desc">Saubere Übergänge von High bis Low Fade – der beliebteste Style im modernen Barbershop.</p>
+        <div class="service-price">Preise auf Anfrage</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🪒</div>
+        <div class="service-name">Bart trimmen &amp; Konturen</div>
+        <p class="service-desc">Scharfe Konturen, präzise Linien und gepflegte Bärte – für einen makellosen Auftritt.</p>
+        <div class="service-price">Preise auf Anfrage</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💈</div>
+        <div class="service-name">Styling</div>
+        <p class="service-desc">Wir stylen dein Haar mit hochwertigen Produkten für den perfekten Look, der den ganzen Tag hält.</p>
+        <div class="service-price">Preise auf Anfrage</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚿</div>
+        <div class="service-name">Waschen &amp; Schneiden</div>
+        <p class="service-desc">Professionelles Haarwaschen inklusive Kopfmassage und anschliessendem Haarschnitt für das Gesamtpaket.</p>
+        <div class="service-price">Preise auf Anfrage</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👦</div>
+        <div class="service-name">Kinderhaarschnitt</div>
+        <p class="service-desc">Entspannte Atmosphäre auch für die Kleinen – saubere Schnitte, geduldige Behandlung.</p>
+        <div class="service-price">Preise auf Anfrage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="ueber-uns" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img-placeholder">
+          <!-- placeholder – ersetze durch ein echtes Shop-Foto -->
+        </div>
+        <div class="about-corner">
+          <div class="about-corner-num">2020</div>
+          <div class="about-corner-txt">Gegründet</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">Über uns</div>
+        <h2 class="section-title">Solomon Barbershop Zürich</h2>
+        <div class="divider"></div>
+        <p>
+          <strong>SOLOMON BARBERSHOP ZURICH</strong> ist dein moderner Anlaufpunkt für Herrenhaarschnitte, saubere Fades und erstklassige Bartpflege mitten in Zürich. Wir stehen für Qualität, Präzision und eine Atmosphäre, in der du dich wohlfühlst.
+        </p>
+        <p>
+          An der <strong>Zypressenstrasse 54 im Kreis 4</strong> bieten wir dir alles, was der moderne Mann braucht – ob klassischer Schnitt, moderner Fade oder gepflegter Bart. Bei uns wirst du nicht einfach nur frisiert, sondern beraten und individuell behandelt.
+        </p>
+        <p>
+          Komm vorbei und erlebe den Unterschied. <strong>Frischer Style. Scharfe Konturen. Solomon Barbershop.</strong>
+        </p>
+        <div class="about-features">
+          <span class="feature-tag">Fade Cuts</span>
+          <span class="feature-tag">Bartpflege</span>
+          <span class="feature-tag">Modernes Ambiente</span>
+          <span class="feature-tag">Persönliche Beratung</span>
+          <span class="feature-tag">Kreis 4</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section id="galerie" class="section">
+  <div class="container">
+    <div class="gallery-header">
+      <div class="section-label">Galerie</div>
+      <h2 class="section-title">Unsere Arbeiten</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Einblicke in unsere Schnitte, Styles und den Barbershop.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80"
+          alt="Fade Cut Zürich"
+          loading="lazy"
+        />
+        <div class="gallery-overlay"><span class="gallery-label">Fade Cut</span></div>
+      </div>
+      <div class="gallery-item">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&q=80"
+          alt="Bart Styling Zürich"
+          loading="lazy"
+        />
+        <div class="gallery-overlay"><span class="gallery-label">Bart Styling</span></div>
+      </div>
+      <div class="gallery-item">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&q=80"
+          alt="Barbershop Interior"
+          loading="lazy"
+        />
+        <div class="gallery-overlay"><span class="gallery-label">Shop Interior</span></div>
+      </div>
+      <div class="gallery-item">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80"
+          alt="Herrenhaarschnitt Zürich"
+          loading="lazy"
+        />
+        <div class="gallery-overlay"><span class="gallery-label">Herrenhaarschnitt</span></div>
+      </div>
+      <div class="gallery-item">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1593702295094-9bfe6f12b97e?w=800&q=80"
+          alt="Skin Fade Zürich"
+          loading="lazy"
+        />
+        <div class="gallery-overlay"><span class="gallery-label">Skin Fade</span></div>
+      </div>
+      <div class="gallery-item">
+        <img
+          class="gallery-img"
+          src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=800&q=80"
+          alt="Barber bei der Arbeit"
+          loading="lazy"
+        />
+        <div class="gallery-overlay"><span class="gallery-label">Precision Cut</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY ═══ -->
+<section id="warum" class="section">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 0;">
+      <div class="section-label" style="justify-content:center;display:flex;">Warum Solomon</div>
+      <h2 class="section-title" style="text-align:center;">Dein Barbershop in Zürich</h2>
+      <div class="divider" style="margin:0 auto 20px;"></div>
+      <p class="section-sub" style="margin:0 auto;text-align:center;">
+        Fünf gute Gründe, warum Männer in Zürich zu SOLOMON kommen.
+      </p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">📍</div>
+        <div class="why-title">Zentral in Zürich</div>
+        <p class="why-desc">Direkt an der Zypressenstrasse 54 im Kreis 4 – gut erreichbar mit ÖV und zu Fuss.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🕐</div>
+        <div class="why-title">Lange Öffnungszeiten</div>
+        <p class="why-desc">Mo–Fr bis 20 Uhr und samstags bis 18 Uhr. Auch nach der Arbeit noch Zeit für einen frischen Cut.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">✂️</div>
+        <div class="why-title">Moderne Barber-Styles</div>
+        <p class="why-desc">Von klassisch bis zeitgemäss – wir beherrschen alle aktuellen Schnitt- und Fade-Techniken.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">Persönliche Beratung</div>
+        <p class="why-desc">Wir nehmen uns Zeit für dich und beraten dich ehrlich – damit der Look zu dir passt.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📲</div>
+        <div class="why-title">Direkt erreichbar</div>
+        <p class="why-desc">Ruf einfach an oder schreib uns – unkompliziert und schnell. Kein langer Papierkram.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OPENING HOURS ═══ -->
+<section id="oeffnungszeiten" class="section">
+  <div class="container">
+    <div class="hours-wrap">
+      <div>
+        <div class="section-label">Wann wir da sind</div>
+        <h2 class="section-title">Öffnungszeiten</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Du findest uns von Montag bis Samstag in Zürich. Komm einfach vorbei oder ruf kurz an.</p>
+        <div class="hours-table">
+          <div class="hours-row">
+            <span class="hours-day">Montag</span>
+            <span class="hours-time">09:00 – 20:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Dienstag</span>
+            <span class="hours-time">09:00 – 20:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Mittwoch</span>
+            <span class="hours-time">09:00 – 20:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Donnerstag</span>
+            <span class="hours-time">09:00 – 20:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Freitag</span>
+            <span class="hours-time">09:00 – 20:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Samstag</span>
+            <span class="hours-time">09:00 – 18:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sonntag</span>
+            <span class="hours-time closed">Geschlossen</span>
+          </div>
+        </div>
+      </div>
+      <div class="hours-cta">
+        <div style="font-size:40px;margin-bottom:16px;">💈</div>
+        <div class="hours-cta-title">Bereit für deinen neuen Look?</div>
+        <p class="hours-cta-sub">Ruf uns an oder schreib uns eine Nachricht – wir freuen uns auf deinen Besuch in unserem Barbershop in Zürich.</p>
+        <div class="hours-cta-btns">
+          <a href="tel:0443048856" class="btn btn-gold" style="justify-content:center;">📞 044 304 88 56</a>
+          <a href="#kontakt" class="btn btn-outline" style="justify-content:center;">✉ Termin anfragen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="kontakt" class="section">
+  <div class="container">
+    <div style="margin-bottom:56px;">
+      <div class="section-label">Kontakt</div>
+      <h2 class="section-title">Finde uns in Zürich</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Adresse</div>
+            <div class="contact-item-val">
+              Zypressenstrasse 54<br />8004 Zürich, Schweiz
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Telefon</div>
+            <div class="contact-item-val">
+              <a href="tel:0443048856">044 304 88 56</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-item-label">E-Mail</div>
+            <div class="contact-item-val">
+              <a href="mailto:solomonbarbershop2020@gmail.com">solomonbarbershop2020@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-item-label">Öffnungszeiten</div>
+            <div class="contact-item-val">
+              Mo–Fr: 09:00–20:00<br />
+              Sa: 09:00–18:00<br />
+              So: Geschlossen
+            </div>
+          </div>
+        </div>
+        <div class="map-placeholder">
+          <!-- Google Maps Embed – ersetze YOUR_API_KEY mit deinem Schlüssel oder nutze die eingebettete Karte direkt -->
+          <div class="map-placeholder-label">
+            📍 Zypressenstrasse 54, 8004 Zürich
+          </div>
+          <a
+            href="https://www.google.com/maps/search/Zypressenstrasse+54+8004+Z%C3%BCrich"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="position:absolute;inset:0;display:block;"
+            aria-label="Google Maps öffnen"
+          ></a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div class="form-title">Termin anfragen</div>
+        <p class="form-sub">Schreib uns eine kurze Nachricht und wir melden uns so schnell wie möglich bei dir.</p>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" placeholder="Dein Name" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" id="phone" name="phone" placeholder="079 000 00 00" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input type="email" id="email" name="email" placeholder="deine@email.ch" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Nachricht *</label>
+            <textarea id="message" name="message" placeholder="Was kann ich für dich tun? Gewünschter Termin, Leistung, ..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">✉ Termin anfragen</button>
+          <p class="form-note">
+            Wir melden uns innerhalb von 24 Stunden bei dir. Alternativ kannst du uns direkt anrufen: <a href="tel:0443048856" style="color:var(--gold);">044 304 88 56</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">SOLOMON <span>BARBERSHOP</span> ZURICH</div>
+        <p class="footer-brand-desc">Moderner Barbershop für Herrenhaarschnitte, Fade Cuts, Bartpflege und Styling im Herzen von Zürich.</p>
+        <div class="footer-contact-line">📍 Zypressenstrasse 54, 8004 Zürich</div>
+        <div class="footer-contact-line">📞 <a href="tel:0443048856">044 304 88 56</a></div>
+        <div class="footer-contact-line">✉ <a href="mailto:solomonbarbershop2020@gmail.com">solomonbarbershop2020@gmail.com</a></div>
+      </div>
+      <div>
+        <div class="footer-heading">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Rechtliches</div>
+        <ul class="footer-links">
+          <li><a href="#impressum">Impressum</a></li>
+          <li><a href="#datenschutz">Datenschutz</a></li>
+        </ul>
+        <div class="footer-heading" style="margin-top:28px;">Öffnungszeiten</div>
+        <ul class="footer-links">
+          <li style="color:var(--grey);font-size:14px;margin-bottom:6px;">Mo–Fr: 09:00–20:00</li>
+          <li style="color:var(--grey);font-size:14px;margin-bottom:6px;">Sa: 09:00–18:00</li>
+          <li style="color:var(--grey);font-size:14px;">So: Geschlossen</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; 2024 SOLOMON BARBERSHOP ZURICH · Zypressenstrasse 54, 8004 Zürich
+      </p>
+      <div class="footer-legal">
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast">✅ Nachricht gesendet! Wir melden uns bald.</div>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+  }
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+      mobileMenu.classList.remove('open');
+    }
+  });
+
+  // Nav scroll shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.style.background = 'rgba(10,10,10,0.98)';
+    } else {
+      navbar.style.background = 'rgba(10,10,10,0.92)';
+    }
+  });
+
+  // Contact form
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if (!name || !email || !message) {
+      alert('Bitte fülle alle Pflichtfelder aus (Name, E-Mail, Nachricht).');
+      return;
+    }
+    // Build mailto link as simple fallback
+    const subject = encodeURIComponent('Terminanfrage – ' + name);
+    const body    = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Telefon: ' + (document.getElementById('phone').value || '–') + '\n' +
+      'E-Mail: ' + email + '\n\n' +
+      'Nachricht:\n' + message
+    );
+    window.location.href = 'mailto:solomonbarbershop2020@gmail.com?subject=' + subject + '&body=' + body;
+
+    // Show toast
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+    this.reset();
+  });
+
+  // Smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#impressum' || href === '#datenschutz') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const offset = 68;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
