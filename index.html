@@ -5,1281 +5,1817 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SOLOMON BARBERSHOP ZURICH | Barbershop in Zürich</title>
   <meta name="description" content="Moderner Barbershop in Zürich für Herrenhaarschnitte, Fade Cuts, Bartpflege und Styling. Besuchen Sie SOLOMON BARBERSHOP ZURICH an der Zypressenstrasse 54." />
-  <meta name="keywords" content="Barbershop Zürich, Herrenhaarschnitt Zürich, Fade Cut Zürich, Bart trimmen Zürich, Friseur Zürich" />
+  <meta name="keywords" content="Barbershop Zürich, Herrenhaarschnitt Zürich, Fade Cut Zürich, Bart trimmen Zürich, Friseur Zürich, Barber Kreis 4" />
   <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0a0a0a" />
   <meta property="og:title" content="SOLOMON BARBERSHOP ZURICH | Barbershop in Zürich" />
   <meta property="og:description" content="Moderner Barbershop in Zürich für Herrenhaarschnitte, Fade Cuts, Bartpflege und Styling." />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_CH" />
+
+  <!-- Fonts: Bebas Neue (display) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ═══════════════════════════════════════
+       DESIGN TOKENS  (OLED Dark + Gold)
+    ═══════════════════════════════════════ */
     :root {
-      --black:   #0a0a0a;
-      --dark:    #111111;
-      --mid:     #1c1c1c;
-      --card:    #161616;
-      --border:  #2a2a2a;
-      --grey:    #888888;
-      --light:   #e8e8e8;
-      --white:   #ffffff;
-      --gold:    #c9a84c;
-      --gold-dk: #a8893a;
-      --radius:  6px;
+      /* Backgrounds */
+      --bg-base:      #0a0a0a;
+      --bg-raised:    #111111;
+      --bg-elevated:  #161616;
+      --bg-overlay:   #1c1c1c;
+
+      /* Foregrounds */
+      --fg-primary:   #f5f5f5;
+      --fg-secondary: #a3a3a3;
+      --fg-muted:     #525252;
+
+      /* Accent — gold */
+      --accent:       #c9a84c;
+      --accent-dk:    #a8893a;
+      --accent-glow:  rgba(201,168,76,0.15);
+      --accent-border:rgba(201,168,76,0.25);
+
+      /* Borders */
+      --border:       #262626;
+      --border-light: #2e2e2e;
+
+      /* Radius */
+      --r-sm: 4px;
+      --r-md: 8px;
+      --r-lg: 12px;
+
+      /* Motion */
+      --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in:   cubic-bezier(0.4, 0, 1, 1);
+      --dur-fast:  150ms;
+      --dur-base:  250ms;
+      --dur-slow:  400ms;
     }
 
-    html { scroll-behavior: smooth; }
-
+    /* ═══ RESET ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--black);
-      color: var(--light);
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-base);
+      color: var(--fg-primary);
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+    ::selection { background: var(--accent); color: var(--bg-base); }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
-    /* ─── UTILITY ─── */
-    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-    .section    { padding: 96px 0; }
-    .section-label {
-      font-family: 'Inter', sans-serif;
+    /* Focus ring */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: var(--r-sm);
+    }
+
+    /* ═══ LAYOUT ═══ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section { padding: 112px 0; }
+    @media (max-width: 768px) { .section { padding: 72px 0; } }
+
+    /* ═══ TYPE SCALE ═══ */
+    .label {
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 3px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
+      color: var(--accent);
     }
-    .section-title {
+    .display {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(36px, 6vw, 64px);
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 20px;
+      font-size: clamp(56px, 9vw, 112px);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      color: var(--fg-primary);
     }
-    .section-sub {
-      font-size: 16px;
-      color: var(--grey);
-      max-width: 560px;
-      line-height: 1.7;
+    .heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      color: var(--fg-primary);
     }
+    .subheading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(24px, 3vw, 36px);
+      letter-spacing: 0.02em;
+      color: var(--fg-primary);
+    }
+    .body-lg { font-size: 17px; line-height: 1.75; color: var(--fg-secondary); }
+    .body-md { font-size: 15px; line-height: 1.7;  color: var(--fg-secondary); }
+    .body-sm { font-size: 13px; line-height: 1.6;  color: var(--fg-muted); }
+
+    .rule {
+      width: 40px; height: 2px;
+      background: var(--accent);
+      margin: 20px 0 32px;
+    }
+
+    /* ═══ BUTTONS ═══ */
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 14px 30px;
-      border-radius: var(--radius);
-      font-size: 14px;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: var(--r-md);
+      font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.5px;
-      text-decoration: none;
-      cursor: pointer;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       border: none;
-      transition: all 0.2s ease;
+      cursor: pointer;
+      transition:
+        background var(--dur-fast) var(--ease-out),
+        color     var(--dur-fast) var(--ease-out),
+        transform var(--dur-fast) var(--ease-out),
+        box-shadow var(--dur-fast) var(--ease-out);
+      white-space: nowrap;
     }
-    .btn-gold {
-      background: var(--gold);
-      color: var(--black);
+    .btn:hover  { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-base);
     }
-    .btn-gold:hover { background: var(--gold-dk); transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1.5px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-    .divider {
-      width: 48px; height: 3px;
-      background: var(--gold);
-      margin-bottom: 32px;
+    .btn-primary:hover {
+      background: var(--accent-dk);
+      box-shadow: 0 8px 32px rgba(201,168,76,0.25);
     }
 
-    /* ─── NAV ─── */
-    nav {
+    .btn-ghost {
+      background: transparent;
+      color: var(--fg-primary);
+      border: 1.5px solid var(--border-light);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ═══ SVG ICONS ═══ */
+    .icon {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .icon-sm { width: 16px; height: 16px; }
+    .icon-lg { width: 24px; height: 24px; }
+
+    /* ═══════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════ */
+    #nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      transition: background 0.3s;
+      z-index: 200;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--dur-base) var(--ease-out);
     }
+    #nav.scrolled { border-bottom-color: var(--border); }
+
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
+      width: 100%;
     }
+
     .nav-logo {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 2px;
+      font-size: 20px;
+      letter-spacing: 0.12em;
+      color: var(--fg-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .nav-logo span { color: var(--gold); }
+    .nav-logo-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .nav-logo-accent { color: var(--accent); }
+
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 36px;
       list-style: none;
     }
     .nav-links a {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.5px;
-      color: var(--grey);
-      text-decoration: none;
-      transition: color 0.2s;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-secondary);
+      transition: color var(--dur-fast) var(--ease-out);
+      position: relative;
+      padding-bottom: 2px;
     }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta { margin-left: 16px; }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--accent);
+      transition: width var(--dur-base) var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--fg-primary); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta { margin-left: 8px; }
+
+    /* Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
+      justify-content: center;
       gap: 5px;
-      cursor: pointer;
-      padding: 4px;
+      width: 40px; height: 40px;
       background: none;
       border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: var(--r-sm);
     }
-    .hamburger span {
-      display: block;
-      width: 24px; height: 2px;
-      background: var(--white);
-      transition: all 0.3s;
+    .hamburger-line {
+      width: 22px; height: 1.5px;
+      background: var(--fg-primary);
+      transition: all var(--dur-base) var(--ease-out);
+      transform-origin: center;
     }
-    .mobile-menu {
-      display: none;
+    .hamburger.open .hamburger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open .hamburger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav-drawer {
       position: fixed;
-      top: 68px; left: 0; right: 0;
-      background: var(--dark);
-      border-bottom: 1px solid var(--border);
-      padding: 24px;
-      z-index: 99;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--bg-base);
+      z-index: 190;
+      display: flex;
+      flex-direction: column;
+      padding: 40px 24px;
+      gap: 0;
+      transform: translateX(-100%);
+      transition: transform var(--dur-slow) var(--ease-out);
     }
-    .mobile-menu.open { display: flex; flex-direction: column; gap: 20px; }
-    .mobile-menu a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--light);
-      text-decoration: none;
-      padding: 8px 0;
+    .nav-drawer.open { transform: translateX(0); }
+    .nav-drawer a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 0.04em;
+      color: var(--fg-secondary);
+      padding: 16px 0;
       border-bottom: 1px solid var(--border);
+      transition: color var(--dur-fast) var(--ease-out);
+    }
+    .nav-drawer a:hover { color: var(--accent); }
+    .nav-drawer .drawer-cta {
+      margin-top: 40px;
     }
 
-    /* ─── HERO ─── */
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
     #hero {
       position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding-top: 64px;
       overflow: hidden;
-      padding-top: 68px;
     }
+
     .hero-bg {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(135deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.82) 60%, rgba(10,10,10,0.6) 100%),
-        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1600&q=80') center/cover no-repeat;
+      z-index: 0;
     }
+    .hero-bg-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    /* Layered gradient: heavy left vignette + bottom scrim */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.88) 45%, rgba(10,10,10,0.45) 100%),
+        linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 40%);
+    }
+
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 700px;
+      padding: 80px 0 72px;
+      max-width: 680px;
     }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(201,168,76,0.12);
-      border: 1px solid rgba(201,168,76,0.3);
+      gap: 10px;
+      padding: 7px 14px;
+      border: 1px solid var(--accent-border);
       border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 28px;
+      background: var(--accent-glow);
+      margin-bottom: 36px;
     }
-    .hero-badge::before {
-      content: '';
+    .hero-badge-dot {
       width: 6px; height: 6px;
-      background: var(--gold);
+      background: var(--accent);
       border-radius: 50%;
+      animation: pulse 2.5s ease-in-out infinite;
     }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-badge-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(52px, 9vw, 100px);
-      color: var(--white);
-      line-height: 0.95;
-      margin-bottom: 24px;
+      font-size: clamp(64px, 11vw, 128px);
+      line-height: 0.88;
+      letter-spacing: 0.01em;
+      color: var(--fg-primary);
+      margin-bottom: 28px;
     }
-    .hero-title span { color: var(--gold); }
+    .hero-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
     .hero-sub {
-      font-size: 17px;
-      color: #aaaaaa;
-      max-width: 520px;
+      font-size: 16px;
       line-height: 1.75;
-      margin-bottom: 40px;
+      color: #888;
+      max-width: 480px;
+      margin-bottom: 48px;
     }
-    .hero-btns {
+
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 60px;
+      margin-bottom: 72px;
     }
+
     .hero-stats {
       display: flex;
-      gap: 40px;
+      gap: 48px;
       flex-wrap: wrap;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
     }
-    .stat-item {}
-    .stat-num {
+    .stat {}
+    .stat-n {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
-      color: var(--gold);
+      font-size: 44px;
       line-height: 1;
+      color: var(--accent);
     }
-    .stat-label {
-      font-size: 12px;
-      color: var(--grey);
-      letter-spacing: 1px;
+    .stat-l {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-top: 4px;
     }
-    .hero-scroll {
+
+    /* Scroll indicator */
+    .scroll-hint {
       position: absolute;
       bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%);
+      right: 32px;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
-      color: var(--grey);
-      font-size: 11px;
-      letter-spacing: 2px;
+      gap: 10px;
+    }
+    .scroll-hint-text {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      animation: bounce 2s infinite;
+      color: var(--fg-muted);
+      writing-mode: vertical-rl;
     }
-    .hero-scroll::after {
-      content: '';
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, var(--grey), transparent);
+    .scroll-hint-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--fg-muted), transparent);
+      animation: scroll-drop 2s ease-in-out infinite;
     }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
+    @keyframes scroll-drop {
+      0%, 100% { transform: scaleY(1); transform-origin: top; }
+      50% { transform: scaleY(0.4); transform-origin: bottom; }
     }
 
-    /* ─── SERVICES ─── */
-    #leistungen { background: var(--dark); }
-    .services-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 56px;
-      gap: 24px;
-      flex-wrap: wrap;
+    /* ═══════════════════════════════════════
+       MARQUEE STRIP
+    ═══════════════════════════════════════ */
+    .marquee-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-raised);
+      overflow: hidden;
+      padding: 18px 0;
     }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 32px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      color: var(--fg-muted);
+      white-space: nowrap;
+    }
+    .marquee-sep {
+      width: 4px; height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════
+       SERVICES
+    ═══════════════════════════════════════ */
+    #leistungen { background: var(--bg-base); }
+
+    .services-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    @media (max-width: 768px) {
+      .services-head { grid-template-columns: 1fr; gap: 24px; }
+    }
+
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: var(--r-lg);
       overflow: hidden;
     }
-    .service-card {
-      background: var(--card);
-      padding: 36px 32px;
-      transition: background 0.2s;
-      cursor: default;
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .service-card:hover { background: #1e1e1e; }
-    .service-icon {
-      width: 48px; height: 48px;
-      background: rgba(201,168,76,0.1);
-      border: 1px solid rgba(201,168,76,0.2);
-      border-radius: var(--radius);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-      margin-bottom: 20px;
+    @media (max-width: 540px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    .service-card {
+      background: var(--bg-raised);
+      padding: 40px 36px;
+      transition: background var(--dur-fast) var(--ease-out);
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px; height: 0;
+      background: var(--accent);
+      transition: height var(--dur-base) var(--ease-out);
+    }
+    .service-card:hover { background: var(--bg-elevated); }
+    .service-card:hover::before { height: 100%; }
+
+    .service-icon-wrap {
+      width: 44px; height: 44px;
+      border-radius: var(--r-md);
+      background: var(--accent-glow);
+      border: 1px solid var(--accent-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      color: var(--accent);
     }
     .service-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 22px;
-      color: var(--white);
-      letter-spacing: 1px;
-      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+      color: var(--fg-primary);
+      margin-bottom: 10px;
     }
     .service-desc {
       font-size: 14px;
-      color: var(--grey);
       line-height: 1.65;
-      margin-bottom: 16px;
+      color: var(--fg-secondary);
+      margin-bottom: 20px;
     }
     .service-price {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--accent);
     }
 
-    /* ─── ABOUT ─── */
-    #ueber-uns { background: var(--black); }
+    /* ═══════════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════════ */
+    #ueber-uns { background: var(--bg-raised); }
+
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 96px;
       align-items: center;
     }
-    .about-img-wrap {
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 56px; }
+    }
+
+    .about-visual {
       position: relative;
     }
-    .about-img {
+    .about-photo {
       width: 100%;
-      aspect-ratio: 4/5;
+      aspect-ratio: 3/4;
       object-fit: cover;
-      border-radius: var(--radius);
+      border-radius: var(--r-lg);
       display: block;
     }
-    .about-img-placeholder {
+    .about-photo-placeholder {
       width: 100%;
-      aspect-ratio: 4/5;
-      background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-      color: var(--grey);
-      font-size: 13px;
+      aspect-ratio: 3/4;
+      border-radius: var(--r-lg);
+      background: var(--bg-elevated);
       border: 1px solid var(--border);
       overflow: hidden;
       position: relative;
     }
-    .about-img-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%),
-        url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=800&q=80') center/cover no-repeat;
-      opacity: 0.6;
+    .about-photo-placeholder img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
     }
-    .about-corner {
+    .about-badge {
       position: absolute;
-      bottom: -20px; right: -20px;
-      background: var(--gold);
-      color: var(--black);
-      padding: 20px 24px;
-      border-radius: var(--radius);
+      bottom: 28px;
+      right: -20px;
+      background: var(--accent);
+      color: var(--bg-base);
+      padding: 20px 28px;
+      border-radius: var(--r-lg);
       text-align: center;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.5);
     }
-    .about-corner-num {
+    .about-badge-n {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 40px;
+      font-size: 48px;
       line-height: 1;
     }
-    .about-corner-txt {
+    .about-badge-l {
       font-size: 11px;
       font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      margin-top: 2px;
     }
-    .about-text p {
+
+    .about-copy p {
       font-size: 15px;
-      color: #999;
-      line-height: 1.8;
+      line-height: 1.85;
+      color: var(--fg-secondary);
       margin-bottom: 20px;
     }
-    .about-text p strong { color: var(--light); font-weight: 600; }
-    .about-features {
+    .about-copy p strong { color: var(--fg-primary); font-weight: 600; }
+
+    .about-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
+      gap: 10px;
+      margin-top: 36px;
     }
-    .feature-tag {
-      background: var(--mid);
+    .tag {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--fg-secondary);
+      background: var(--bg-elevated);
       border: 1px solid var(--border);
       border-radius: 100px;
       padding: 6px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--light);
+      transition: border-color var(--dur-fast), color var(--dur-fast);
+    }
+    .tag:hover { border-color: var(--accent-border); color: var(--accent); }
+
+    /* ═══════════════════════════════════════
+       GALLERY
+    ═══════════════════════════════════════ */
+    #galerie { background: var(--bg-base); }
+
+    .gallery-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      gap: 24px;
+      flex-wrap: wrap;
     }
 
-    /* ─── GALLERY ─── */
-    #galerie { background: var(--dark); }
-    .gallery-header { margin-bottom: 48px; }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(2, 260px);
-      gap: 12px;
+      grid-auto-rows: 280px;
+      gap: 10px;
     }
-    .gallery-item {
-      border-radius: var(--radius);
-      overflow: hidden;
-      position: relative;
-      background: var(--mid);
-    }
-    .gallery-item:nth-child(1) { grid-column: span 5; }
-    .gallery-item:nth-child(2) { grid-column: span 4; }
-    .gallery-item:nth-child(3) { grid-column: span 3; }
-    .gallery-item:nth-child(4) { grid-column: span 3; }
-    .gallery-item:nth-child(5) { grid-column: span 5; }
-    .gallery-item:nth-child(6) { grid-column: span 4; }
-    .gallery-img {
+    .g-item { position: relative; border-radius: var(--r-md); overflow: hidden; background: var(--bg-elevated); }
+    .g-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+    .g-item:nth-child(2) { grid-column: span 4; }
+    .g-item:nth-child(3) { grid-column: span 3; }
+    .g-item:nth-child(4) { grid-column: span 3; }
+    .g-item:nth-child(5) { grid-column: span 4; }
+    .g-item:nth-child(6) { grid-column: span 5; }
+
+    .g-img {
       width: 100%; height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
+      transition: transform var(--dur-slow) var(--ease-out);
     }
-    .gallery-item:hover .gallery-img { transform: scale(1.05); }
-    .gallery-overlay {
+    .g-item:hover .g-img { transform: scale(1.06); }
+
+    .g-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, transparent 55%);
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: opacity var(--dur-base) var(--ease-out);
       display: flex;
       align-items: flex-end;
-      padding: 16px;
+      padding: 20px;
     }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .gallery-label {
+    .g-item:hover .g-overlay { opacity: 1; }
+    .g-label {
       font-size: 13px;
       font-weight: 600;
-      color: var(--white);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.06em;
+      color: var(--fg-primary);
     }
 
-    /* ─── WHY ─── */
-    #warum { background: var(--black); }
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 240px;
+      }
+      .g-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+      .g-item:nth-child(1) { grid-column: span 2; }
+    }
+    @media (max-width: 540px) {
+      .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+      .g-item:nth-child(n) { grid-column: span 1; }
+    }
+
+    /* ═══════════════════════════════════════
+       WHY US
+    ═══════════════════════════════════════ */
+    #warum { background: var(--bg-raised); }
+
+    .why-head { text-align: center; margin-bottom: 72px; }
+    .why-head .rule { margin: 20px auto 32px; }
+
     .why-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 24px;
-      margin-top: 56px;
-    }
-    .why-card {
-      background: var(--card);
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--border);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      transition: border-color 0.2s, transform 0.2s;
+      border-radius: var(--r-lg);
+      overflow: hidden;
     }
-    .why-card:hover {
-      border-color: rgba(201,168,76,0.4);
-      transform: translateY(-3px);
+    @media (max-width: 1024px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 640px)  { .why-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 420px)  { .why-grid { grid-template-columns: 1fr; } }
+
+    .why-card {
+      background: var(--bg-raised);
+      padding: 40px 32px;
+      transition: background var(--dur-fast) var(--ease-out);
     }
-    .why-icon {
-      font-size: 28px;
-      margin-bottom: 16px;
+    .why-card:hover { background: var(--bg-elevated); }
+
+    .why-icon-wrap {
+      width: 44px; height: 44px;
+      border-radius: var(--r-md);
+      background: var(--accent-glow);
+      border: 1px solid var(--accent-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 20px;
     }
     .why-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
-      color: var(--white);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.04em;
+      color: var(--fg-primary);
       margin-bottom: 8px;
     }
-    .why-desc {
-      font-size: 14px;
-      color: var(--grey);
-      line-height: 1.6;
-    }
+    .why-desc { font-size: 13px; line-height: 1.65; color: var(--fg-secondary); }
 
-    /* ─── HOURS ─── */
-    #oeffnungszeiten {
-      background: var(--mid);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .hours-wrap {
+    /* ═══════════════════════════════════════
+       HOURS + CTA BAND
+    ═══════════════════════════════════════ */
+    #oeffnungszeiten { background: var(--bg-base); }
+
+    .hours-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
-      align-items: center;
+      align-items: start;
     }
-    .hours-table { width: 100%; margin-top: 32px; }
+    @media (max-width: 900px) {
+      .hours-layout { grid-template-columns: 1fr; gap: 56px; }
+    }
+
+    .hours-table { width: 100%; margin-top: 8px; }
     .hours-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 0;
+      padding: 17px 0;
       border-bottom: 1px solid var(--border);
+      transition: background var(--dur-fast);
     }
     .hours-row:last-child { border-bottom: none; }
-    .hours-day {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--light);
-    }
+    .hours-day { font-size: 14px; font-weight: 500; color: var(--fg-secondary); }
     .hours-time {
       font-size: 14px;
       font-weight: 600;
-      color: var(--gold);
+      color: var(--accent);
     }
-    .hours-time.closed { color: var(--grey); }
-    .hours-cta {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 40px 36px;
-      text-align: center;
-    }
-    .hours-cta-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .hours-cta-sub {
-      font-size: 14px;
-      color: var(--grey);
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-    .hours-cta-btns { display: flex; flex-direction: column; gap: 12px; }
+    .hours-time.closed { color: var(--fg-muted); font-weight: 400; }
 
-    /* ─── CONTACT ─── */
-    #kontakt { background: var(--dark); }
-    .contact-grid {
+    .cta-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 48px 40px;
+      position: sticky;
+      top: 80px;
+    }
+    .cta-box-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 0.04em;
+      color: var(--fg-primary);
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+    .cta-box-sub {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--fg-secondary);
+      margin-bottom: 32px;
+    }
+    .cta-box-actions { display: flex; flex-direction: column; gap: 12px; }
+    .cta-box-actions .btn { justify-content: center; }
+
+    /* ═══════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════ */
+    #kontakt { background: var(--bg-raised); }
+
+    .contact-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: 80px;
     }
-    .contact-info { }
-    .contact-item {
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 56px; }
+    }
+
+    /* Info side */
+    .contact-info {}
+    .info-item {
       display: flex;
-      gap: 16px;
+      gap: 18px;
       align-items: flex-start;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
-    .contact-icon {
+    .info-icon {
       width: 44px; height: 44px;
-      background: rgba(201,168,76,0.08);
-      border: 1px solid rgba(201,168,76,0.2);
-      border-radius: var(--radius);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
       flex-shrink: 0;
-    }
-    .contact-item-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 4px;
-    }
-    .contact-item-val {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--light);
-    }
-    .contact-item-val a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .contact-item-val a:hover { color: var(--gold); }
-    .map-placeholder {
-      width: 100%;
-      height: 220px;
-      background: var(--mid);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: var(--r-md);
+      background: var(--accent-glow);
+      border: 1px solid var(--accent-border);
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-      color: var(--grey);
-      font-size: 14px;
-      margin-top: 32px;
-      overflow: hidden;
-      position: relative;
+      color: var(--accent);
     }
-    .map-placeholder iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      filter: grayscale(1) brightness(0.5);
+    .info-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-bottom: 6px;
     }
-    .map-placeholder-label {
-      position: relative;
-      z-index: 1;
-      background: rgba(0,0,0,0.7);
-      padding: 6px 14px;
-      border-radius: 4px;
-      font-size: 13px;
+    .info-value {
+      font-size: 15px;
       font-weight: 500;
-      color: var(--light);
+      color: var(--fg-primary);
+      line-height: 1.6;
+    }
+    .info-value a {
+      color: inherit;
+      transition: color var(--dur-fast);
+    }
+    .info-value a:hover { color: var(--accent); }
+
+    .map-block {
+      margin-top: 8px;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 220px;
+      background: var(--bg-elevated);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-inner-label {
       display: flex;
       align-items: center;
       gap: 8px;
+      background: rgba(10,10,10,0.85);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--fg-primary);
+      z-index: 1;
+      cursor: pointer;
+      transition: border-color var(--dur-fast);
     }
-    .contact-form { }
+    .map-inner-label:hover { border-color: var(--accent); }
+    .map-block a.map-cover {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* Form side */
+    .contact-form {}
     .form-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      color: var(--white);
+      font-size: 40px;
+      letter-spacing: 0.04em;
+      color: var(--fg-primary);
+      line-height: 1;
       margin-bottom: 8px;
     }
     .form-sub {
       font-size: 14px;
-      color: var(--grey);
-      margin-bottom: 32px;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: var(--fg-secondary);
+      margin-bottom: 36px;
     }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+
     .form-group { margin-bottom: 16px; }
     .form-group label {
       display: block;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--grey);
+      color: var(--fg-muted);
       margin-bottom: 8px;
     }
     .form-group input,
-    .form-group textarea {
+    .form-group textarea,
+    .form-group select {
       width: 100%;
-      background: var(--mid);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 12px 16px;
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 13px 16px;
       font-size: 14px;
       font-family: 'Inter', sans-serif;
-      color: var(--light);
+      color: var(--fg-primary);
       outline: none;
-      transition: border-color 0.2s;
-      resize: vertical;
+      transition: border-color var(--dur-fast) var(--ease-out);
+      -webkit-appearance: none;
     }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--fg-muted); }
     .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-    }
-    .form-group textarea { min-height: 120px; }
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { min-height: 130px; resize: vertical; }
+    .form-group select { cursor: pointer; }
+
     .form-submit {
       width: 100%;
-      padding: 15px;
-      background: var(--gold);
-      color: var(--black);
+      padding: 16px;
+      background: var(--accent);
+      color: var(--bg-base);
       border: none;
-      border-radius: var(--radius);
-      font-size: 14px;
+      border-radius: var(--r-md);
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
       margin-top: 8px;
+      transition:
+        background var(--dur-fast) var(--ease-out),
+        transform  var(--dur-fast) var(--ease-out),
+        box-shadow var(--dur-fast) var(--ease-out);
     }
-    .form-submit:hover { background: var(--gold-dk); transform: translateY(-1px); }
+    .form-submit:hover {
+      background: var(--accent-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201,168,76,0.25);
+    }
+    .form-submit:active { transform: translateY(0); }
     .form-note {
       font-size: 12px;
-      color: var(--grey);
+      color: var(--fg-muted);
       text-align: center;
-      margin-top: 12px;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    .form-note a { color: var(--accent); }
+    .field-error {
+      font-size: 12px;
+      color: #ef4444;
+      margin-top: 6px;
+      display: none;
+    }
+    .form-group.has-error input,
+    .form-group.has-error textarea {
+      border-color: #ef4444;
+    }
+    .form-group.has-error .field-error { display: block; }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--bg-base);
+      border-top: 1px solid var(--border);
     }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--black);
-      border-top: 1px solid var(--border);
-      padding: 60px 0 32px;
-    }
-    .footer-grid {
+    .footer-main {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 48px;
-      margin-bottom: 48px;
+      padding: 72px 0 56px;
     }
+    @media (max-width: 900px) {
+      .footer-main { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 540px) {
+      .footer-main { grid-template-columns: 1fr; }
+    }
+
     .footer-brand-logo {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
-      color: var(--white);
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-    }
-    .footer-brand-logo span { color: var(--gold); }
-    .footer-brand-desc {
-      font-size: 14px;
-      color: var(--grey);
-      line-height: 1.7;
-      max-width: 280px;
-      margin-bottom: 20px;
-    }
-    .footer-contact-line {
-      font-size: 14px;
-      color: var(--grey);
-      margin-bottom: 6px;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      color: var(--fg-primary);
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .footer-contact-line a { color: var(--grey); text-decoration: none; }
-    .footer-contact-line a:hover { color: var(--gold); }
-    .footer-heading {
-      font-size: 11px;
+    .footer-brand-logo span { color: var(--accent); }
+    .footer-brand-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--fg-muted);
+      max-width: 260px;
+      margin-bottom: 24px;
+    }
+    .footer-contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--fg-muted);
+      margin-bottom: 8px;
+    }
+    .footer-contact-row a { transition: color var(--dur-fast); }
+    .footer-contact-row a:hover { color: var(--accent); }
+
+    .footer-col-title {
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--white);
+      color: var(--fg-primary);
       margin-bottom: 20px;
     }
     .footer-links { list-style: none; }
     .footer-links li { margin-bottom: 10px; }
     .footer-links a {
-      font-size: 14px;
-      color: var(--grey);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: 13px;
+      color: var(--fg-muted);
+      transition: color var(--dur-fast);
     }
-    .footer-links a:hover { color: var(--gold); }
+    .footer-links a:hover { color: var(--accent); }
+
     .footer-bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 28px;
+      padding: 20px 0;
       border-top: 1px solid var(--border);
       flex-wrap: wrap;
       gap: 12px;
     }
-    .footer-copy {
-      font-size: 13px;
-      color: var(--grey);
-    }
-    .footer-legal {
-      display: flex;
-      gap: 24px;
-    }
-    .footer-legal a {
-      font-size: 13px;
-      color: var(--grey);
-      text-decoration: none;
-    }
-    .footer-legal a:hover { color: var(--gold); }
+    .footer-copy { font-size: 12px; color: var(--fg-muted); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 12px; color: var(--fg-muted); transition: color var(--dur-fast); }
+    .footer-legal a:hover { color: var(--accent); }
 
-    /* ─── TOAST ─── */
+    /* ═══════════════════════════════════════
+       TOAST
+    ═══════════════════════════════════════ */
     .toast {
       position: fixed;
-      bottom: 32px; right: 32px;
-      background: var(--gold);
-      color: var(--black);
-      padding: 14px 24px;
-      border-radius: var(--radius);
-      font-size: 14px;
-      font-weight: 600;
+      bottom: 28px; right: 28px;
       z-index: 999;
-      opacity: 0;
+      background: var(--bg-elevated);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--r-lg);
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--fg-primary);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.5);
       transform: translateY(16px);
-      transition: all 0.3s ease;
+      opacity: 0;
       pointer-events: none;
+      transition:
+        transform var(--dur-base) var(--ease-out),
+        opacity   var(--dur-base) var(--ease-out);
     }
-    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .toast-icon { color: var(--accent); flex-shrink: 0; }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .about-corner { bottom: -16px; right: 16px; }
-      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-      .hours-wrap { grid-template-columns: 1fr; gap: 40px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-      }
-      .gallery-item:nth-child(n) { grid-column: span 1; }
-      .gallery-item:nth-child(1) { grid-column: span 2; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .section { padding: 64px 0; }
-      .hero-title { font-size: 52px; }
-      .hero-stats { gap: 28px; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-item:nth-child(n) { grid-column: span 1; height: 220px; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .toast { left: 16px; right: 16px; bottom: 16px; }
+    /* ═══ UTILITY ═══ */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); border: 0;
     }
   </style>
 </head>
 <body>
 
-<!-- ═══ NAVIGATION ═══ -->
-<nav id="navbar">
+<!-- ════════════════════════ SKIP LINK ════════════════════════ -->
+<a href="#main-content" class="sr-only" style="position:fixed;top:8px;left:8px;z-index:9999;background:var(--accent);color:var(--bg-base);padding:8px 16px;border-radius:4px;font-weight:600;">
+  Zum Inhalt springen
+</a>
+
+<!-- ════════════════════════ NAV ════════════════════════ -->
+<nav id="nav" role="navigation" aria-label="Hauptnavigation">
   <div class="container">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">SOLOMON <span>BARBERSHOP</span></a>
-      <ul class="nav-links">
+      <a href="#hero" class="nav-logo" aria-label="Solomon Barbershop Zürich – Startseite">
+        <span class="nav-logo-dot" aria-hidden="true"></span>
+        SOLOMON <span class="nav-logo-accent">BARBERSHOP</span>
+      </a>
+
+      <ul class="nav-links" role="list">
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="#ueber-uns">Über uns</a></li>
         <li><a href="#galerie">Galerie</a></li>
-        <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+        <li><a href="#oeffnungszeiten">Zeiten</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
-      <a href="tel:0443048856" class="btn btn-gold nav-cta" style="padding:10px 22px;font-size:13px;">
-        📞 044 304 88 56
+
+      <a href="tel:0443048856" class="btn btn-primary nav-cta" style="padding:11px 22px;">
+        <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.93 10.5 19.79 19.79 0 01.87 1.9A2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        044 304 88 56
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
-        <span></span><span></span><span></span>
+
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-drawer">
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
       </button>
     </div>
   </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#leistungen" onclick="closeMobile()">Leistungen</a>
-  <a href="#ueber-uns" onclick="closeMobile()">Über uns</a>
-  <a href="#galerie" onclick="closeMobile()">Galerie</a>
-  <a href="#oeffnungszeiten" onclick="closeMobile()">Öffnungszeiten</a>
-  <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
-  <a href="tel:0443048856" class="btn btn-gold" style="text-align:center;justify-content:center;margin-top:8px;">📞 Jetzt anrufen</a>
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Navigation" aria-hidden="true">
+  <a href="#leistungen" class="drawer-link">Leistungen</a>
+  <a href="#ueber-uns"  class="drawer-link">Über uns</a>
+  <a href="#galerie"    class="drawer-link">Galerie</a>
+  <a href="#oeffnungszeiten" class="drawer-link">Öffnungszeiten</a>
+  <a href="#kontakt"    class="drawer-link">Kontakt</a>
+  <div class="drawer-cta">
+    <a href="tel:0443048856" class="btn btn-primary" style="width:100%;justify-content:center;">
+      <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.93 10.5 19.79 19.79 0 01.87 1.9A2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      Jetzt anrufen
+    </a>
+  </div>
 </div>
 
-<!-- ═══ HERO ═══ -->
-<section id="hero">
-  <div class="hero-bg"></div>
+<!-- ════════════════════════ HERO ════════════════════════ -->
+<main id="main-content">
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img
+      class="hero-bg-img"
+      src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1920&q=85"
+      alt=""
+      fetchpriority="high"
+    />
+  </div>
+
   <div class="container">
     <div class="hero-content">
-      <div class="hero-badge">Barbershop · Zürich 8004</div>
+      <div class="hero-badge" aria-label="Standort">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        <span class="hero-badge-text">Barbershop · Zürich Kreis 4</span>
+      </div>
+
       <h1 class="hero-title">
-        Dein Barbershop<br /><span>in Zürich</span>
+        Dein<br />
+        Barbershop<br />
+        <em>in Zürich</em>
       </h1>
+
       <p class="hero-sub">
         Moderne Herrenhaarschnitte, präzise Bartpflege und frischer Style an der Zypressenstrasse 54. Für Männer, die Wert auf ihr Aussehen legen.
       </p>
-      <div class="hero-btns">
-        <a href="tel:0443048856" class="btn btn-gold">📞 Jetzt anrufen</a>
-        <a href="#kontakt" class="btn btn-outline">✉ Termin anfragen</a>
+
+      <div class="hero-actions">
+        <a href="tel:0443048856" class="btn btn-primary">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.93 10.5 19.79 19.79 0 01.87 1.9A2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          Jetzt anrufen
+        </a>
+        <a href="#kontakt" class="btn btn-ghost">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Termin anfragen
+        </a>
       </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-num">6+</div>
-          <div class="stat-label">Leistungen</div>
+
+      <div class="hero-stats" role="list" aria-label="Kennzahlen">
+        <div class="stat" role="listitem">
+          <div class="stat-n" aria-label="Mehr als sechs Leistungen">6+</div>
+          <div class="stat-l">Leistungen</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">11h</div>
-          <div class="stat-label">Täglich geöffnet</div>
+        <div class="stat" role="listitem">
+          <div class="stat-n" aria-label="11 Stunden täglich geöffnet">11h</div>
+          <div class="stat-l">Täglich geöffnet</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">Mo–Sa</div>
-          <div class="stat-label">Immer für dich da</div>
+        <div class="stat" role="listitem">
+          <div class="stat-n" aria-label="Montag bis Samstag geöffnet">Mo–Sa</div>
+          <div class="stat-l">Immer für dich da</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="hero-scroll">Scroll</div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span class="scroll-hint-text">Scroll</span>
+    <span class="scroll-hint-line"></span>
+  </div>
 </section>
 
-<!-- ═══ SERVICES ═══ -->
+<!-- ════════════════════════ MARQUEE ════════════════════════ -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <!-- Repeated twice for seamless loop -->
+    <span class="marquee-item">HERRENHAARSCHNITT<span class="marquee-sep"></span></span>
+    <span class="marquee-item">FADE CUT<span class="marquee-sep"></span></span>
+    <span class="marquee-item">BART TRIMMEN<span class="marquee-sep"></span></span>
+    <span class="marquee-item">STYLING<span class="marquee-sep"></span></span>
+    <span class="marquee-item">WASCHEN & SCHNEIDEN<span class="marquee-sep"></span></span>
+    <span class="marquee-item">KINDERHAARSCHNITT<span class="marquee-sep"></span></span>
+    <span class="marquee-item">ZYPRESSENSTRASSE 54<span class="marquee-sep"></span></span>
+    <span class="marquee-item">ZÜRICH KREIS 4<span class="marquee-sep"></span></span>
+    <span class="marquee-item">HERRENHAARSCHNITT<span class="marquee-sep"></span></span>
+    <span class="marquee-item">FADE CUT<span class="marquee-sep"></span></span>
+    <span class="marquee-item">BART TRIMMEN<span class="marquee-sep"></span></span>
+    <span class="marquee-item">STYLING<span class="marquee-sep"></span></span>
+    <span class="marquee-item">WASCHEN & SCHNEIDEN<span class="marquee-sep"></span></span>
+    <span class="marquee-item">KINDERHAARSCHNITT<span class="marquee-sep"></span></span>
+    <span class="marquee-item">ZYPRESSENSTRASSE 54<span class="marquee-sep"></span></span>
+    <span class="marquee-item">ZÜRICH KREIS 4<span class="marquee-sep"></span></span>
+  </div>
+</div>
+
+<!-- ════════════════════════ SERVICES ════════════════════════ -->
 <section id="leistungen" class="section">
   <div class="container">
-    <div class="services-header">
+    <div class="services-head">
       <div>
-        <div class="section-label">Leistungen</div>
-        <h2 class="section-title">Was wir anbieten</h2>
-        <div class="divider"></div>
-        <p class="section-sub">Von präzisen Fades bis zur perfekten Bartpflege – wir bieten alles, was der moderne Mann braucht.</p>
+        <p class="label">Leistungen</p>
+        <div class="rule"></div>
+        <h2 class="heading">Was wir<br />anbieten</h2>
       </div>
-      <a href="tel:0443048856" class="btn btn-gold" style="white-space:nowrap;align-self:flex-end;">
-        📞 Preise erfragen
-      </a>
+      <div>
+        <p class="body-md" style="margin-bottom:28px;">
+          Von präzisen Fades bis zur perfekten Bartpflege – wir bieten alles, was der moderne Mann braucht. Alle Preise auf Anfrage.
+        </p>
+        <a href="tel:0443048856" class="btn btn-primary">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.93 10.5 19.79 19.79 0 01.87 1.9A2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          Preise erfragen
+        </a>
+      </div>
     </div>
+
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">✂️</div>
-        <div class="service-name">Herrenhaarschnitt</div>
+      <!-- Herrenhaarschnitt -->
+      <article class="service-card">
+        <div class="service-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M6 9C6 9 9 3 12 3s6 6 6 6M6 9c0 3.314 2.686 6 6 6s6-2.686 6-6M6 9H3m15 0h3M9 21l3-6 3 6"/>
+          </svg>
+        </div>
+        <h3 class="service-name">Herrenhaarschnitt</h3>
         <p class="service-desc">Klassischer oder moderner Herrenhaarschnitt – präzise ausgeführt und perfekt auf deinen Typ abgestimmt.</p>
-        <div class="service-price">Preise auf Anfrage</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">⚡</div>
-        <div class="service-name">Fade Cut</div>
+        <p class="service-price">Preise auf Anfrage</p>
+      </article>
+
+      <!-- Fade Cut -->
+      <article class="service-card">
+        <div class="service-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12 3v18M3 12l4-4 4 4 4-4 4 4"/>
+          </svg>
+        </div>
+        <h3 class="service-name">Fade Cut</h3>
         <p class="service-desc">Saubere Übergänge von High bis Low Fade – der beliebteste Style im modernen Barbershop.</p>
-        <div class="service-price">Preise auf Anfrage</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🪒</div>
-        <div class="service-name">Bart trimmen &amp; Konturen</div>
+        <p class="service-price">Preise auf Anfrage</p>
+      </article>
+
+      <!-- Bart -->
+      <article class="service-card">
+        <div class="service-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="5"/><path d="M3 21c0-4.418 4.03-8 9-8s9 3.582 9 8"/>
+          </svg>
+        </div>
+        <h3 class="service-name">Bart trimmen &amp; Konturen</h3>
         <p class="service-desc">Scharfe Konturen, präzise Linien und gepflegte Bärte – für einen makellosen Auftritt.</p>
-        <div class="service-price">Preise auf Anfrage</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">💈</div>
-        <div class="service-name">Styling</div>
+        <p class="service-price">Preise auf Anfrage</p>
+      </article>
+
+      <!-- Styling -->
+      <article class="service-card">
+        <div class="service-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3 class="service-name">Styling</h3>
         <p class="service-desc">Wir stylen dein Haar mit hochwertigen Produkten für den perfekten Look, der den ganzen Tag hält.</p>
-        <div class="service-price">Preise auf Anfrage</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🚿</div>
-        <div class="service-name">Waschen &amp; Schneiden</div>
-        <p class="service-desc">Professionelles Haarwaschen inklusive Kopfmassage und anschliessendem Haarschnitt für das Gesamtpaket.</p>
-        <div class="service-price">Preise auf Anfrage</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">👦</div>
-        <div class="service-name">Kinderhaarschnitt</div>
+        <p class="service-price">Preise auf Anfrage</p>
+      </article>
+
+      <!-- Waschen -->
+      <article class="service-card">
+        <div class="service-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/>
+          </svg>
+        </div>
+        <h3 class="service-name">Waschen &amp; Schneiden</h3>
+        <p class="service-desc">Professionelles Haarwaschen mit Kopfmassage und anschliessendem Schnitt für das Gesamtpaket.</p>
+        <p class="service-price">Preise auf Anfrage</p>
+      </article>
+
+      <!-- Kinder -->
+      <article class="service-card">
+        <div class="service-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <h3 class="service-name">Kinderhaarschnitt</h3>
         <p class="service-desc">Entspannte Atmosphäre auch für die Kleinen – saubere Schnitte, geduldige Behandlung.</p>
-        <div class="service-price">Preise auf Anfrage</div>
-      </div>
+        <p class="service-price">Preise auf Anfrage</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══ ABOUT ═══ -->
+<!-- ════════════════════════ ABOUT ════════════════════════ -->
 <section id="ueber-uns" class="section">
   <div class="container">
     <div class="about-grid">
-      <div class="about-img-wrap">
-        <div class="about-img-placeholder">
-          <!-- placeholder – ersetze durch ein echtes Shop-Foto -->
+      <div class="about-visual">
+        <div class="about-photo-placeholder">
+          <img
+            src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=800&q=80"
+            alt="Solomon Barbershop Zürich – Innenansicht"
+            loading="lazy"
+          />
         </div>
-        <div class="about-corner">
-          <div class="about-corner-num">2020</div>
-          <div class="about-corner-txt">Gegründet</div>
+        <div class="about-badge" aria-label="Gegründet 2020">
+          <div class="about-badge-n">2020</div>
+          <div class="about-badge-l">Gegründet</div>
         </div>
       </div>
-      <div class="about-text">
-        <div class="section-label">Über uns</div>
-        <h2 class="section-title">Solomon Barbershop Zürich</h2>
-        <div class="divider"></div>
+
+      <div class="about-copy">
+        <p class="label">Über uns</p>
+        <div class="rule"></div>
+        <h2 class="heading" style="margin-bottom:32px;">Solomon<br />Barbershop</h2>
+
         <p>
           <strong>SOLOMON BARBERSHOP ZURICH</strong> ist dein moderner Anlaufpunkt für Herrenhaarschnitte, saubere Fades und erstklassige Bartpflege mitten in Zürich. Wir stehen für Qualität, Präzision und eine Atmosphäre, in der du dich wohlfühlst.
         </p>
         <p>
-          An der <strong>Zypressenstrasse 54 im Kreis 4</strong> bieten wir dir alles, was der moderne Mann braucht – ob klassischer Schnitt, moderner Fade oder gepflegter Bart. Bei uns wirst du nicht einfach nur frisiert, sondern beraten und individuell behandelt.
+          An der <strong>Zypressenstrasse 54 im Kreis 4</strong> bieten wir dir alles, was der moderne Mann braucht – ob klassischer Schnitt, moderner Fade oder gepflegter Bart. Bei uns wirst du nicht einfach nur frisiert, sondern ehrlich beraten und individuell behandelt.
         </p>
         <p>
-          Komm vorbei und erlebe den Unterschied. <strong>Frischer Style. Scharfe Konturen. Solomon Barbershop.</strong>
+          Komm vorbei und erlebe den Unterschied. <strong>Frischer Style. Scharfe Konturen. Solomon Barbershop Zürich.</strong>
         </p>
-        <div class="about-features">
-          <span class="feature-tag">Fade Cuts</span>
-          <span class="feature-tag">Bartpflege</span>
-          <span class="feature-tag">Modernes Ambiente</span>
-          <span class="feature-tag">Persönliche Beratung</span>
-          <span class="feature-tag">Kreis 4</span>
+
+        <div class="about-tags" role="list" aria-label="Leistungen im Überblick">
+          <span class="tag" role="listitem">Fade Cuts</span>
+          <span class="tag" role="listitem">Bartpflege</span>
+          <span class="tag" role="listitem">Herrenhaarschnitte</span>
+          <span class="tag" role="listitem">Styling</span>
+          <span class="tag" role="listitem">Persönliche Beratung</span>
+          <span class="tag" role="listitem">Kreis 4, Zürich</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ GALLERY ═══ -->
-<section id="galerie" class="section">
+<!-- ════════════════════════ GALLERY ════════════════════════ -->
+<section id="galerie" class="section" style="background:var(--bg-base);">
   <div class="container">
-    <div class="gallery-header">
-      <div class="section-label">Galerie</div>
-      <h2 class="section-title">Unsere Arbeiten</h2>
-      <div class="divider"></div>
-      <p class="section-sub">Einblicke in unsere Schnitte, Styles und den Barbershop.</p>
+    <div class="gallery-head">
+      <div>
+        <p class="label">Galerie</p>
+        <div class="rule" style="margin-bottom:0;"></div>
+      </div>
+      <h2 class="heading">Unsere Arbeiten</h2>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img
-          class="gallery-img"
-          src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80"
-          alt="Fade Cut Zürich"
-          loading="lazy"
-        />
-        <div class="gallery-overlay"><span class="gallery-label">Fade Cut</span></div>
+
+    <div class="gallery-grid" role="list" aria-label="Galerie – Arbeiten von Solomon Barbershop">
+      <div class="g-item" role="listitem">
+        <img class="g-img" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=900&q=80" alt="Fade Cut – Solomon Barbershop Zürich" loading="lazy" />
+        <div class="g-overlay" aria-hidden="true"><span class="g-label">Fade Cut</span></div>
       </div>
-      <div class="gallery-item">
-        <img
-          class="gallery-img"
-          src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&q=80"
-          alt="Bart Styling Zürich"
-          loading="lazy"
-        />
-        <div class="gallery-overlay"><span class="gallery-label">Bart Styling</span></div>
+      <div class="g-item" role="listitem">
+        <img class="g-img" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=700&q=80" alt="Bart Styling – Solomon Barbershop Zürich" loading="lazy" />
+        <div class="g-overlay" aria-hidden="true"><span class="g-label">Bart Styling</span></div>
       </div>
-      <div class="gallery-item">
-        <img
-          class="gallery-img"
-          src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&q=80"
-          alt="Barbershop Interior"
-          loading="lazy"
-        />
-        <div class="gallery-overlay"><span class="gallery-label">Shop Interior</span></div>
+      <div class="g-item" role="listitem">
+        <img class="g-img" src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80" alt="Barbershop Interior – Solomon Barbershop Zürich" loading="lazy" />
+        <div class="g-overlay" aria-hidden="true"><span class="g-label">Shop Interior</span></div>
       </div>
-      <div class="gallery-item">
-        <img
-          class="gallery-img"
-          src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80"
-          alt="Herrenhaarschnitt Zürich"
-          loading="lazy"
-        />
-        <div class="gallery-overlay"><span class="gallery-label">Herrenhaarschnitt</span></div>
+      <div class="g-item" role="listitem">
+        <img class="g-img" src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" alt="Herrenhaarschnitt – Solomon Barbershop Zürich" loading="lazy" />
+        <div class="g-overlay" aria-hidden="true"><span class="g-label">Herrenhaarschnitt</span></div>
       </div>
-      <div class="gallery-item">
-        <img
-          class="gallery-img"
-          src="https://images.unsplash.com/photo-1593702295094-9bfe6f12b97e?w=800&q=80"
-          alt="Skin Fade Zürich"
-          loading="lazy"
-        />
-        <div class="gallery-overlay"><span class="gallery-label">Skin Fade</span></div>
+      <div class="g-item" role="listitem">
+        <img class="g-img" src="https://images.unsplash.com/photo-1593702295094-9bfe6f12b97e?w=700&q=80" alt="Skin Fade – Solomon Barbershop Zürich" loading="lazy" />
+        <div class="g-overlay" aria-hidden="true"><span class="g-label">Skin Fade</span></div>
       </div>
-      <div class="gallery-item">
-        <img
-          class="gallery-img"
-          src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=800&q=80"
-          alt="Barber bei der Arbeit"
-          loading="lazy"
-        />
-        <div class="gallery-overlay"><span class="gallery-label">Precision Cut</span></div>
+      <div class="g-item" role="listitem">
+        <img class="g-img" src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=900&q=80" alt="Precision Cut – Solomon Barbershop Zürich" loading="lazy" />
+        <div class="g-overlay" aria-hidden="true"><span class="g-label">Precision Cut</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ WHY ═══ -->
+<!-- ════════════════════════ WHY ════════════════════════ -->
 <section id="warum" class="section">
   <div class="container">
-    <div style="text-align:center; margin-bottom: 0;">
-      <div class="section-label" style="justify-content:center;display:flex;">Warum Solomon</div>
-      <h2 class="section-title" style="text-align:center;">Dein Barbershop in Zürich</h2>
-      <div class="divider" style="margin:0 auto 20px;"></div>
-      <p class="section-sub" style="margin:0 auto;text-align:center;">
-        Fünf gute Gründe, warum Männer in Zürich zu SOLOMON kommen.
-      </p>
+    <div class="why-head">
+      <p class="label">Warum Solomon</p>
+      <div class="rule"></div>
+      <h2 class="heading">Dein Barbershop<br />in Zürich</h2>
     </div>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">📍</div>
-        <div class="why-title">Zentral in Zürich</div>
+
+    <div class="why-grid" role="list" aria-label="Unsere Vorteile">
+      <article class="why-card" role="listitem">
+        <div class="why-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3 class="why-title">Zentral in Zürich</h3>
         <p class="why-desc">Direkt an der Zypressenstrasse 54 im Kreis 4 – gut erreichbar mit ÖV und zu Fuss.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">🕐</div>
-        <div class="why-title">Lange Öffnungszeiten</div>
-        <p class="why-desc">Mo–Fr bis 20 Uhr und samstags bis 18 Uhr. Auch nach der Arbeit noch Zeit für einen frischen Cut.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">✂️</div>
-        <div class="why-title">Moderne Barber-Styles</div>
+      </article>
+
+      <article class="why-card" role="listitem">
+        <div class="why-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3 class="why-title">Lange Öffnungszeiten</h3>
+        <p class="why-desc">Mo–Fr bis 20 Uhr und samstags bis 18 Uhr. Auch nach der Arbeit noch Zeit für deinen Look.</p>
+      </article>
+
+      <article class="why-card" role="listitem">
+        <div class="why-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <h3 class="why-title">Moderne Barber-Styles</h3>
         <p class="why-desc">Von klassisch bis zeitgemäss – wir beherrschen alle aktuellen Schnitt- und Fade-Techniken.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">🤝</div>
-        <div class="why-title">Persönliche Beratung</div>
+      </article>
+
+      <article class="why-card" role="listitem">
+        <div class="why-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <h3 class="why-title">Persönliche Beratung</h3>
         <p class="why-desc">Wir nehmen uns Zeit für dich und beraten dich ehrlich – damit der Look zu dir passt.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">📲</div>
-        <div class="why-title">Direkt erreichbar</div>
-        <p class="why-desc">Ruf einfach an oder schreib uns – unkompliziert und schnell. Kein langer Papierkram.</p>
-      </div>
+      </article>
+
+      <article class="why-card" role="listitem">
+        <div class="why-icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.93 10.5 19.79 19.79 0 01.87 1.9A2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <h3 class="why-title">Direkt erreichbar</h3>
+        <p class="why-desc">Ruf einfach an oder schreib uns – unkompliziert, schnell und ohne langen Papierkram.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══ OPENING HOURS ═══ -->
-<section id="oeffnungszeiten" class="section">
+<!-- ════════════════════════ HOURS ════════════════════════ -->
+<section id="oeffnungszeiten" class="section" style="background:var(--bg-base);">
   <div class="container">
-    <div class="hours-wrap">
+    <div class="hours-layout">
       <div>
-        <div class="section-label">Wann wir da sind</div>
-        <h2 class="section-title">Öffnungszeiten</h2>
-        <div class="divider"></div>
-        <p class="section-sub">Du findest uns von Montag bis Samstag in Zürich. Komm einfach vorbei oder ruf kurz an.</p>
-        <div class="hours-table">
-          <div class="hours-row">
-            <span class="hours-day">Montag</span>
-            <span class="hours-time">09:00 – 20:00</span>
-          </div>
-          <div class="hours-row">
-            <span class="hours-day">Dienstag</span>
-            <span class="hours-time">09:00 – 20:00</span>
-          </div>
-          <div class="hours-row">
-            <span class="hours-day">Mittwoch</span>
-            <span class="hours-time">09:00 – 20:00</span>
-          </div>
-          <div class="hours-row">
-            <span class="hours-day">Donnerstag</span>
-            <span class="hours-time">09:00 – 20:00</span>
-          </div>
-          <div class="hours-row">
-            <span class="hours-day">Freitag</span>
-            <span class="hours-time">09:00 – 20:00</span>
-          </div>
-          <div class="hours-row">
-            <span class="hours-day">Samstag</span>
-            <span class="hours-time">09:00 – 18:00</span>
-          </div>
-          <div class="hours-row">
-            <span class="hours-day">Sonntag</span>
-            <span class="hours-time closed">Geschlossen</span>
-          </div>
-        </div>
+        <p class="label">Wann wir da sind</p>
+        <div class="rule"></div>
+        <h2 class="heading" style="margin-bottom:16px;">Öffnungszeiten</h2>
+        <p class="body-md" style="margin-bottom:40px;">Wir sind von Montag bis Samstag für dich da. Komm vorbei oder ruf kurz an.</p>
+
+        <table class="hours-table" aria-label="Öffnungszeiten">
+          <tbody>
+            <tr class="hours-row"><td class="hours-day">Montag</td>    <td class="hours-time">09:00 – 20:00</td></tr>
+            <tr class="hours-row"><td class="hours-day">Dienstag</td>  <td class="hours-time">09:00 – 20:00</td></tr>
+            <tr class="hours-row"><td class="hours-day">Mittwoch</td>  <td class="hours-time">09:00 – 20:00</td></tr>
+            <tr class="hours-row"><td class="hours-day">Donnerstag</td><td class="hours-time">09:00 – 20:00</td></tr>
+            <tr class="hours-row"><td class="hours-day">Freitag</td>   <td class="hours-time">09:00 – 20:00</td></tr>
+            <tr class="hours-row"><td class="hours-day">Samstag</td>   <td class="hours-time">09:00 – 18:00</td></tr>
+            <tr class="hours-row"><td class="hours-day">Sonntag</td>   <td class="hours-time closed">Geschlossen</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="hours-cta">
-        <div style="font-size:40px;margin-bottom:16px;">💈</div>
-        <div class="hours-cta-title">Bereit für deinen neuen Look?</div>
-        <p class="hours-cta-sub">Ruf uns an oder schreib uns eine Nachricht – wir freuen uns auf deinen Besuch in unserem Barbershop in Zürich.</p>
-        <div class="hours-cta-btns">
-          <a href="tel:0443048856" class="btn btn-gold" style="justify-content:center;">📞 044 304 88 56</a>
-          <a href="#kontakt" class="btn btn-outline" style="justify-content:center;">✉ Termin anfragen</a>
+
+      <div class="cta-box">
+        <div style="font-size:32px;margin-bottom:20px;" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 01-4.96-.46 2.5 2.5 0 01-1.07-4.14A3 3 0 014.83 11c.26-.67.31-1.38.16-2.06A3 3 0 018 5.9a2.5 2.5 0 011.5-3.9z"/>
+            <path d="M14.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 004.96-.46 2.5 2.5 0 001.07-4.14A3 3 0 0019.17 11c-.26-.67-.31-1.38-.16-2.06A3 3 0 0016 5.9a2.5 2.5 0 00-1.5-3.9z"/>
+          </svg>
+        </div>
+        <p class="cta-box-title">Bereit für deinen neuen Look?</p>
+        <p class="cta-box-sub">Ruf uns an oder schreib uns eine Nachricht – wir freuen uns auf deinen Besuch an der Zypressenstrasse 54.</p>
+        <div class="cta-box-actions">
+          <a href="tel:0443048856" class="btn btn-primary">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.93 10.5 19.79 19.79 0 01.87 1.9A2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            044 304 88 56
+          </a>
+          <a href="#kontakt" class="btn btn-ghost">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+            Termin anfragen
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CONTACT ═══ -->
+<!-- ════════════════════════ CONTACT ════════════════════════ -->
 <section id="kontakt" class="section">
   <div class="container">
-    <div style="margin-bottom:56px;">
-      <div class="section-label">Kontakt</div>
-      <h2 class="section-title">Finde uns in Zürich</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="contact-grid">
+    <p class="label" style="margin-bottom:16px;">Kontakt</p>
+    <div class="rule"></div>
+    <h2 class="heading" style="margin-bottom:64px;">Finde uns<br />in Zürich</h2>
+
+    <div class="contact-layout">
+      <!-- Info -->
       <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
           <div>
-            <div class="contact-item-label">Adresse</div>
-            <div class="contact-item-val">
-              Zypressenstrasse 54<br />8004 Zürich, Schweiz
-            </div>
+            <p class="info-label">Adresse</p>
+            <p class="info-value">Zypressenstrasse 54<br />8004 Zürich, Schweiz</p>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
+
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.93 10.5 19.79 19.79 0 01.87 1.9A2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
           <div>
-            <div class="contact-item-label">Telefon</div>
-            <div class="contact-item-val">
-              <a href="tel:0443048856">044 304 88 56</a>
-            </div>
+            <p class="info-label">Telefon</p>
+            <p class="info-value"><a href="tel:0443048856">044 304 88 56</a></p>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">✉️</div>
+
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
           <div>
-            <div class="contact-item-label">E-Mail</div>
-            <div class="contact-item-val">
-              <a href="mailto:solomonbarbershop2020@gmail.com">solomonbarbershop2020@gmail.com</a>
-            </div>
+            <p class="info-label">E-Mail</p>
+            <p class="info-value"><a href="mailto:solomonbarbershop2020@gmail.com">solomonbarbershop2020@gmail.com</a></p>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">🕐</div>
+
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
           <div>
-            <div class="contact-item-label">Öffnungszeiten</div>
-            <div class="contact-item-val">
-              Mo–Fr: 09:00–20:00<br />
-              Sa: 09:00–18:00<br />
-              So: Geschlossen
-            </div>
+            <p class="info-label">Öffnungszeiten</p>
+            <p class="info-value">Mo–Fr: 09:00–20:00<br />Sa: 09:00–18:00<br />So: Geschlossen</p>
           </div>
         </div>
-        <div class="map-placeholder">
-          <!-- Google Maps Embed – ersetze YOUR_API_KEY mit deinem Schlüssel oder nutze die eingebettete Karte direkt -->
-          <div class="map-placeholder-label">
-            📍 Zypressenstrasse 54, 8004 Zürich
+
+        <!-- Map -->
+        <div class="map-block">
+          <div class="map-inner-label">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            Auf Google Maps öffnen
           </div>
           <a
             href="https://www.google.com/maps/search/Zypressenstrasse+54+8004+Z%C3%BCrich"
             target="_blank"
             rel="noopener noreferrer"
-            style="position:absolute;inset:0;display:block;"
-            aria-label="Google Maps öffnen"
+            class="map-cover"
+            aria-label="Zypressenstrasse 54, 8004 Zürich auf Google Maps öffnen"
           ></a>
         </div>
       </div>
 
+      <!-- Form -->
       <div class="contact-form">
-        <div class="form-title">Termin anfragen</div>
-        <p class="form-sub">Schreib uns eine kurze Nachricht und wir melden uns so schnell wie möglich bei dir.</p>
-        <form id="contactForm" novalidate>
+        <h3 class="form-title">Termin anfragen</h3>
+        <p class="form-sub">Schreib uns eine kurze Nachricht – wir melden uns so schnell wie möglich bei dir.</p>
+
+        <form id="contactForm" novalidate aria-label="Kontaktformular">
           <div class="form-row">
-            <div class="form-group">
-              <label for="name">Name *</label>
-              <input type="text" id="name" name="name" placeholder="Dein Name" required />
+            <div class="form-group" id="grp-name">
+              <label for="f-name">Name <span aria-hidden="true">*</span></label>
+              <input
+                type="text"
+                id="f-name"
+                name="name"
+                placeholder="Dein Name"
+                required
+                autocomplete="name"
+                aria-required="true"
+                aria-describedby="err-name"
+              />
+              <span class="field-error" id="err-name" role="alert">Bitte gib deinen Namen ein.</span>
             </div>
-            <div class="form-group">
-              <label for="phone">Telefon</label>
-              <input type="tel" id="phone" name="phone" placeholder="079 000 00 00" />
+            <div class="form-group" id="grp-phone">
+              <label for="f-phone">Telefon</label>
+              <input
+                type="tel"
+                id="f-phone"
+                name="phone"
+                placeholder="079 000 00 00"
+                autocomplete="tel"
+              />
             </div>
           </div>
-          <div class="form-group">
-            <label for="email">E-Mail *</label>
-            <input type="email" id="email" name="email" placeholder="deine@email.ch" required />
+
+          <div class="form-group" id="grp-email">
+            <label for="f-email">E-Mail <span aria-hidden="true">*</span></label>
+            <input
+              type="email"
+              id="f-email"
+              name="email"
+              placeholder="deine@email.ch"
+              required
+              autocomplete="email"
+              aria-required="true"
+              aria-describedby="err-email"
+            />
+            <span class="field-error" id="err-email" role="alert">Bitte gib eine gültige E-Mail-Adresse ein.</span>
           </div>
-          <div class="form-group">
-            <label for="message">Nachricht *</label>
-            <textarea id="message" name="message" placeholder="Was kann ich für dich tun? Gewünschter Termin, Leistung, ..." required></textarea>
+
+          <div class="form-group" id="grp-service">
+            <label for="f-service">Gewünschte Leistung</label>
+            <select id="f-service" name="service" aria-label="Leistung auswählen">
+              <option value="">Bitte wählen…</option>
+              <option>Herrenhaarschnitt</option>
+              <option>Fade Cut</option>
+              <option>Bart trimmen &amp; Konturen</option>
+              <option>Styling</option>
+              <option>Waschen &amp; Schneiden</option>
+              <option>Kinderhaarschnitt</option>
+            </select>
           </div>
-          <button type="submit" class="form-submit">✉ Termin anfragen</button>
+
+          <div class="form-group" id="grp-message">
+            <label for="f-message">Nachricht <span aria-hidden="true">*</span></label>
+            <textarea
+              id="f-message"
+              name="message"
+              placeholder="Gewünschter Termin, Wunsch-Style oder weitere Infos…"
+              required
+              aria-required="true"
+              aria-describedby="err-message"
+            ></textarea>
+            <span class="field-error" id="err-message" role="alert">Bitte schreib uns eine kurze Nachricht.</span>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Termin anfragen
+          </button>
           <p class="form-note">
-            Wir melden uns innerhalb von 24 Stunden bei dir. Alternativ kannst du uns direkt anrufen: <a href="tel:0443048856" style="color:var(--gold);">044 304 88 56</a>
+            Oder direkt anrufen: <a href="tel:0443048856">044 304 88 56</a> · Mo–Fr 09–20 Uhr
           </p>
         </form>
       </div>
     </div>
   </div>
 </section>
+</main>
 
-<!-- ═══ FOOTER ═══ -->
-<footer>
+<!-- ════════════════════════ FOOTER ════════════════════════ -->
+<footer role="contentinfo">
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-main">
       <div>
-        <div class="footer-brand-logo">SOLOMON <span>BARBERSHOP</span> ZURICH</div>
+        <div class="footer-brand-logo">
+          <span class="nav-logo-dot" style="width:5px;height:5px;" aria-hidden="true"></span>
+          SOLOMON <span>BARBERSHOP</span> ZÜRICH
+        </div>
         <p class="footer-brand-desc">Moderner Barbershop für Herrenhaarschnitte, Fade Cuts, Bartpflege und Styling im Herzen von Zürich.</p>
-        <div class="footer-contact-line">📍 Zypressenstrasse 54, 8004 Zürich</div>
-        <div class="footer-contact-line">📞 <a href="tel:0443048856">044 304 88 56</a></div>
-        <div class="footer-contact-line">✉ <a href="mailto:solomonbarbershop2020@gmail.com">solomonbarbershop2020@gmail.com</a></div>
+        <div class="footer-contact-row">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true" style="stroke:var(--accent);flex-shrink:0;">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          Zypressenstrasse 54, 8004 Zürich
+        </div>
+        <div class="footer-contact-row">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true" style="stroke:var(--accent);flex-shrink:0;">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.93 10.5 19.79 19.79 0 01.87 1.9A2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          <a href="tel:0443048856">044 304 88 56</a>
+        </div>
+        <div class="footer-contact-row">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true" style="stroke:var(--accent);flex-shrink:0;">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <a href="mailto:solomonbarbershop2020@gmail.com">solomonbarbershop2020@gmail.com</a>
+        </div>
       </div>
-      <div>
-        <div class="footer-heading">Navigation</div>
+
+      <nav aria-label="Leistungen">
+        <p class="footer-col-title">Leistungen</p>
         <ul class="footer-links">
-          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#leistungen">Herrenhaarschnitt</a></li>
+          <li><a href="#leistungen">Fade Cut</a></li>
+          <li><a href="#leistungen">Bart trimmen</a></li>
+          <li><a href="#leistungen">Styling</a></li>
+          <li><a href="#leistungen">Kinderhaarschnitt</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Navigation">
+        <p class="footer-col-title">Navigation</p>
+        <ul class="footer-links">
           <li><a href="#galerie">Galerie</a></li>
           <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
-      </div>
-      <div>
-        <div class="footer-heading">Rechtliches</div>
+      </nav>
+
+      <nav aria-label="Rechtliches">
+        <p class="footer-col-title">Rechtliches</p>
         <ul class="footer-links">
           <li><a href="#impressum">Impressum</a></li>
           <li><a href="#datenschutz">Datenschutz</a></li>
         </ul>
-        <div class="footer-heading" style="margin-top:28px;">Öffnungszeiten</div>
-        <ul class="footer-links">
-          <li style="color:var(--grey);font-size:14px;margin-bottom:6px;">Mo–Fr: 09:00–20:00</li>
-          <li style="color:var(--grey);font-size:14px;margin-bottom:6px;">Sa: 09:00–18:00</li>
-          <li style="color:var(--grey);font-size:14px;">So: Geschlossen</li>
-        </ul>
-      </div>
+        <p class="footer-col-title" style="margin-top:28px;">Öffnungszeiten</p>
+        <p style="font-size:13px;color:var(--fg-muted);line-height:1.9;">
+          Mo–Fr: 09:00–20:00<br />
+          Sa: 09:00–18:00<br />
+          So: Geschlossen
+        </p>
+      </nav>
     </div>
+
     <div class="footer-bottom">
-      <p class="footer-copy">
-        &copy; 2024 SOLOMON BARBERSHOP ZURICH · Zypressenstrasse 54, 8004 Zürich
-      </p>
+      <p class="footer-copy">&copy; 2024 SOLOMON BARBERSHOP ZURICH · Alle Rechte vorbehalten</p>
       <div class="footer-legal">
         <a href="#impressum">Impressum</a>
         <a href="#datenschutz">Datenschutz</a>
@@ -1288,78 +1824,154 @@
   </div>
 </footer>
 
-<!-- Toast -->
-<div class="toast" id="toast">✅ Nachricht gesendet! Wir melden uns bald.</div>
+<!-- Toast notification -->
+<div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+  <svg class="icon toast-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+  </svg>
+  Nachricht gesendet – wir melden uns bald!
+</div>
 
+<!-- ════════════════════════ SCRIPTS ════════════════════════ -->
 <script>
-  // Hamburger
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
-  function closeMobile() {
-    mobileMenu.classList.remove('open');
+(function () {
+  'use strict';
+
+  /* ─── NAV scroll state ─── */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ─── Hamburger / drawer ─── */
+  const btn     = document.getElementById('hamburger');
+  const drawer  = document.getElementById('nav-drawer');
+  const links   = drawer.querySelectorAll('a');
+
+  function openDrawer() {
+    btn.classList.add('open');
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Menü schliessen');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    btn.classList.remove('open');
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Menü öffnen');
+    document.body.style.overflow = '';
   }
 
-  // Close mobile menu on outside click
-  document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-      mobileMenu.classList.remove('open');
-    }
+  btn.addEventListener('click', () => btn.classList.contains('open') ? closeDrawer() : openDrawer());
+  links.forEach(l => l.addEventListener('click', closeDrawer));
+  document.addEventListener('click', e => {
+    if (!btn.contains(e.target) && !drawer.contains(e.target)) closeDrawer();
   });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
-  // Nav scroll shadow
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.style.background = 'rgba(10,10,10,0.98)';
-    } else {
-      navbar.style.background = 'rgba(10,10,10,0.92)';
-    }
-  });
-
-  // Contact form
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name    = document.getElementById('name').value.trim();
-    const email   = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    if (!name || !email || !message) {
-      alert('Bitte fülle alle Pflichtfelder aus (Name, E-Mail, Nachricht).');
-      return;
-    }
-    // Build mailto link as simple fallback
-    const subject = encodeURIComponent('Terminanfrage – ' + name);
-    const body    = encodeURIComponent(
-      'Name: ' + name + '\n' +
-      'Telefon: ' + (document.getElementById('phone').value || '–') + '\n' +
-      'E-Mail: ' + email + '\n\n' +
-      'Nachricht:\n' + message
-    );
-    window.location.href = 'mailto:solomonbarbershop2020@gmail.com?subject=' + subject + '&body=' + body;
-
-    // Show toast
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4000);
-    this.reset();
-  });
-
-  // Smooth scroll for all anchor links
+  /* ─── Smooth scroll with nav offset ─── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href === '#impressum' || href === '#datenschutz') return;
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        const offset = 68;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
+    a.addEventListener('click', function (e) {
+      const id = this.getAttribute('href');
+      if (id === '#impressum' || id === '#datenschutz') return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top, behavior: 'smooth' });
     });
   });
+
+  /* ─── Form validation & submission ─── */
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      let valid = true;
+
+      const fields = [
+        { id: 'f-name',    grp: 'grp-name',    check: v => v.trim().length > 0 },
+        { id: 'f-email',   grp: 'grp-email',   check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+        { id: 'f-message', grp: 'grp-message', check: v => v.trim().length > 0 },
+      ];
+
+      fields.forEach(f => {
+        const el  = document.getElementById(f.id);
+        const grp = document.getElementById(f.grp);
+        if (f.check(el.value)) {
+          grp.classList.remove('has-error');
+        } else {
+          grp.classList.add('has-error');
+          if (valid) el.focus();
+          valid = false;
+        }
+      });
+
+      if (!valid) return;
+
+      // Build mailto
+      const name    = document.getElementById('f-name').value.trim();
+      const phone   = document.getElementById('f-phone').value.trim();
+      const email   = document.getElementById('f-email').value.trim();
+      const service = document.getElementById('f-service').value;
+      const msg     = document.getElementById('f-message').value.trim();
+
+      const subject = encodeURIComponent('Terminanfrage – ' + name);
+      const body    = encodeURIComponent(
+        'Name: '      + name    + '\n' +
+        'Telefon: '   + (phone || '–') + '\n' +
+        'E-Mail: '    + email   + '\n' +
+        'Leistung: '  + (service || '–') + '\n\n' +
+        'Nachricht:\n' + msg
+      );
+
+      window.location.href = 'mailto:solomonbarbershop2020@gmail.com?subject=' + subject + '&body=' + body;
+      form.reset();
+
+      // Show toast
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4500);
+    });
+
+    // Clear error on input
+    form.querySelectorAll('input, textarea').forEach(el => {
+      el.addEventListener('input', function () {
+        const grp = this.closest('.form-group');
+        if (grp) grp.classList.remove('has-error');
+      });
+    });
+  }
+
+  /* ─── Intersection observer – fade-in sections ─── */
+  if ('IntersectionObserver' in window) {
+    const style = document.createElement('style');
+    style.textContent = `
+      .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+      .fade-in.visible { opacity: 1; transform: none; }
+    `;
+    document.head.appendChild(style);
+
+    const targets = document.querySelectorAll(
+      '.service-card, .why-card, .g-item, .info-item, .about-badge, .stat'
+    );
+    targets.forEach(el => el.classList.add('fade-in'));
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 40);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    targets.forEach(el => obs.observe(el));
+  }
+})();
 </script>
 </body>
 </html>
